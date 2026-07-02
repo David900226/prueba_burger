@@ -723,16 +723,10 @@
           radial-gradient(circle at 82% 44%, rgba(242,106,27,.22), transparent 28%),
           linear-gradient(90deg, #0B0705 0%, #0B0705 48%, rgba(11,7,5,.78) 68%, rgba(11,7,5,.22) 100%);
       }
-      /* Patron cinematografico movil: video de fondo muy sutil detras del texto, no como
-         protagonista. Encuadre mas lateral y menos zoom para no cortar la burger de forma
-         brusca; overlay reforzado para que el texto sea lo primero que se lea. */
-      .hero video {
-        display: block;
-        object-fit: cover;
-        object-position: 86% 48%;
-        transform: translateX(4%) scale(.73);
-        opacity: .33;
-      }
+      /* El video con object-fit:cover recorta la burger de forma agresiva en pantallas
+         verticales angostas; en movil se reemplaza por la imagen fallback como fondo
+         sutil (contain, sin recorte), oscurecida con el overlay de abajo. */
+      .hero video { display: none; }
       .hero::before {
         background:
           radial-gradient(circle at 80% 50%, rgba(242,106,27,.07), transparent 36%),
@@ -743,9 +737,25 @@
           inset 0 -150px 140px rgba(11,7,5,.80),
           inset 0 0 120px rgba(0,0,0,.18);
       }
-      /* La imagen fallback de producto queda oculta en este patron: el video cumple el rol
-         de fondo cinematografico. No se elimina el asset ni el <img>, solo se oculta por CSS. */
-      .hero-poster { display: none; }
+      /* Imagen fallback como fondo: absoluta, sin participar del flujo (no empuja badge
+         ni titulo), contain para no cortar la burger, opacidad baja para sensacion de
+         fondo premium en vez de imagen protagonista. */
+      .hero-poster {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: auto;
+        bottom: auto;
+        z-index: -3;
+        width: 100%;
+        max-width: none;
+        height: auto;
+        object-fit: contain;
+        opacity: .32;
+        transform: none;
+        filter: none;
+      }
       .hero-inner {
         min-height: 86svh;
         padding: 104px 24px 40px;

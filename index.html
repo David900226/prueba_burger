@@ -718,45 +718,38 @@
       .nav-links .btn { min-height: 46px; padding: 11px 18px; font-size: .88rem; }
 
       .hero {
-        min-height: 88svh;
+        min-height: 86svh;
         background:
           radial-gradient(circle at 82% 44%, rgba(242,106,27,.22), transparent 28%),
           linear-gradient(90deg, #0B0705 0%, #0B0705 48%, rgba(11,7,5,.78) 68%, rgba(11,7,5,.22) 100%);
       }
-      .hero video { display: none; }
-      /* Ajuste fino de encuadre movil: bloque de imagen mas compacto (~14% menos alto) y
-         overlay mas ligero para que la hamburguesa se vea mas clara, sin tocar desktop. */
+      /* Patron cinematografico movil: video de fondo detras del texto (en vez de imagen
+         protagonista arriba empujando el contenido). Encuadre propio para movil, distinto
+         al de escritorio, para no cortar el encuadre en pantallas angostas. */
+      .hero video {
+        display: block;
+        object-fit: cover;
+        object-position: 75% 57%;
+        transform: translateX(8%) scale(.90);
+        opacity: .95;
+      }
       .hero::before {
         background:
-          radial-gradient(circle at 82% 40%, rgba(242,106,27,.20), transparent 30%),
-          linear-gradient(180deg, rgba(0,0,0,.20) 0%, rgba(0,0,0,.05) 40%, rgba(11,7,5,.90) 100%);
+          radial-gradient(circle at 78% 55%, rgba(242,106,27,.14), transparent 34%),
+          linear-gradient(180deg, rgba(11,7,5,.55) 0%, rgba(11,7,5,.20) 32%, rgba(11,7,5,.30) 55%, rgba(11,7,5,.88) 100%);
       }
       .hero::after {
         box-shadow:
-          inset 0 -90px 130px rgba(11,7,5,.55),
-          inset 0 60px 100px rgba(11,7,5,.32),
-          inset 0 0 110px rgba(0,0,0,.14);
+          inset 0 -150px 140px rgba(11,7,5,.70),
+          inset 0 0 120px rgba(0,0,0,.14);
       }
-      /* Patron "imagen arriba, texto abajo": el fallback real de producto queda grande y
-         protagonista bajo el navbar, sin superponerse al titulo. Ajustar top/width/padding-top
-         de .hero-inner segun proporcion del asset real, pero mantener el patron. */
-      .hero-poster {
-        display: block;
-        top: 57px;
-        left: 50%;
-        right: auto;
-        bottom: auto;
-        width: 72%;
-        max-width: 344px;
-        height: auto;
-        transform: translateX(-50%);
-        object-fit: contain;
-        filter: drop-shadow(0 22px 42px rgba(0,0,0,.68));
-      }
+      /* La imagen fallback de producto queda oculta en este patron: el video cumple el rol
+         de fondo cinematografico. No se elimina el asset ni el <img>, solo se oculta por CSS. */
+      .hero-poster { display: none; }
       .hero-inner {
-        min-height: 88svh;
-        padding: 344px 24px 72px;
-        align-items: center;
+        min-height: 86svh;
+        padding: 104px 24px 40px;
+        align-items: flex-end;
       }
       .hero-copy { max-width: 93%; }
       h1 { font-size: clamp(3.05rem, 13.4vw, 4.15rem); line-height: .96; }

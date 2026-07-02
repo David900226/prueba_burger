@@ -723,25 +723,25 @@
           radial-gradient(circle at 82% 44%, rgba(242,106,27,.22), transparent 28%),
           linear-gradient(90deg, #0B0705 0%, #0B0705 48%, rgba(11,7,5,.78) 68%, rgba(11,7,5,.22) 100%);
       }
-      /* Patron cinematografico movil: video de fondo detras del texto (en vez de imagen
-         protagonista arriba empujando el contenido). Encuadre propio para movil, distinto
-         al de escritorio, para no cortar el encuadre en pantallas angostas. */
+      /* Patron cinematografico movil: video de fondo muy sutil detras del texto, no como
+         protagonista. Encuadre mas lateral y menos zoom para no cortar la burger de forma
+         brusca; overlay reforzado para que el texto sea lo primero que se lea. */
       .hero video {
         display: block;
         object-fit: cover;
-        object-position: 75% 57%;
-        transform: translateX(8%) scale(.90);
-        opacity: .95;
+        object-position: 82% 50%;
+        transform: translateX(4%) scale(.82);
+        opacity: .42;
       }
       .hero::before {
         background:
-          radial-gradient(circle at 78% 55%, rgba(242,106,27,.14), transparent 34%),
-          linear-gradient(180deg, rgba(11,7,5,.55) 0%, rgba(11,7,5,.20) 32%, rgba(11,7,5,.30) 55%, rgba(11,7,5,.88) 100%);
+          radial-gradient(circle at 80% 50%, rgba(242,106,27,.08), transparent 36%),
+          linear-gradient(180deg, rgba(11,7,5,.78) 0%, rgba(11,7,5,.55) 32%, rgba(11,7,5,.62) 55%, rgba(11,7,5,.94) 100%);
       }
       .hero::after {
         box-shadow:
-          inset 0 -150px 140px rgba(11,7,5,.70),
-          inset 0 0 120px rgba(0,0,0,.14);
+          inset 0 -150px 140px rgba(11,7,5,.75),
+          inset 0 0 120px rgba(0,0,0,.16);
       }
       /* La imagen fallback de producto queda oculta en este patron: el video cumple el rol
          de fondo cinematografico. No se elimina el asset ni el <img>, solo se oculta por CSS. */
@@ -757,6 +757,9 @@
       .hero-sub { max-width: 94%; font-size: 1.04rem; line-height: 1.58; }
       .hero-actions { flex-direction: column; gap: 12px; margin-top: 28px; }
       .hero-actions .btn { width: 100%; min-height: 58px; border-radius: 20px; }
+      /* Boton fijo inferior "Pedir por WhatsApp" ya cubre esa accion en movil; dentro del
+         hero solo se deja "Ver el menu" para no duplicar CTAs. */
+      .hero-actions .btn-fire { display: none; }
       .scroll-cue { display: none; }
 
       .trust-strip { margin-top: 0; padding: 0 22px; }

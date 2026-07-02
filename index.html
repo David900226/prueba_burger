@@ -717,45 +717,33 @@
       .nav-links { gap: 0; }
       .nav-links .btn { min-height: 46px; padding: 11px 18px; font-size: .88rem; }
 
+      /* Sin video ni imagen en movil: tanto el cover del video como el contain del poster
+         terminaban recortando o pesando visualmente la burger en pantallas verticales
+         angostas. Se reemplaza por un fondo 100% CSS (carbon calido + glow brasa) para
+         que el texto sea el unico protagonista. */
       .hero {
         min-height: 86svh;
         background:
-          radial-gradient(circle at 82% 44%, rgba(242,106,27,.22), transparent 28%),
-          linear-gradient(90deg, #0B0705 0%, #0B0705 48%, rgba(11,7,5,.78) 68%, rgba(11,7,5,.22) 100%);
+          radial-gradient(circle at 88% 6%, rgba(255,197,49,.16), transparent 30%),
+          radial-gradient(circle at 92% 20%, rgba(255,197,49,.12), transparent 6%),
+          radial-gradient(circle at 16% 66%, rgba(242,106,27,.16), transparent 42%),
+          radial-gradient(circle at 50% 100%, rgba(217,72,15,.12), transparent 55%),
+          linear-gradient(180deg, #120D09 0%, #0B0705 55%, #050302 100%);
       }
-      /* El video con object-fit:cover recorta la burger de forma agresiva en pantallas
-         verticales angostas; en movil se reemplaza por la imagen fallback como fondo
-         sutil (contain, sin recorte), oscurecida con el overlay de abajo. */
       .hero video { display: none; }
       .hero::before {
         background:
-          radial-gradient(circle at 80% 50%, rgba(242,106,27,.07), transparent 36%),
-          linear-gradient(180deg, rgba(11,7,5,.84) 0%, rgba(11,7,5,.62) 32%, rgba(11,7,5,.68) 55%, rgba(11,7,5,.96) 100%);
+          radial-gradient(circle at 85% 8%, rgba(255,197,49,.10), transparent 32%),
+          radial-gradient(circle at 20% 62%, rgba(242,106,27,.09), transparent 40%),
+          linear-gradient(180deg, rgba(11,7,5,.35) 0%, rgba(11,7,5,.10) 30%, rgba(11,7,5,.58) 100%);
       }
       .hero::after {
         box-shadow:
-          inset 0 -150px 140px rgba(11,7,5,.80),
-          inset 0 0 120px rgba(0,0,0,.18);
+          inset 0 -160px 160px rgba(11,7,5,.55),
+          inset 0 90px 120px rgba(11,7,5,.25),
+          inset 0 0 140px rgba(0,0,0,.22);
       }
-      /* Imagen fallback como fondo: absoluta, sin participar del flujo (no empuja badge
-         ni titulo), contain para no cortar la burger, opacidad baja para sensacion de
-         fondo premium en vez de imagen protagonista. */
-      .hero-poster {
-        display: block;
-        position: absolute;
-        top: 0;
-        right: 0;
-        left: auto;
-        bottom: auto;
-        z-index: -3;
-        width: 100%;
-        max-width: none;
-        height: auto;
-        object-fit: contain;
-        opacity: .32;
-        transform: none;
-        filter: none;
-      }
+      .hero-poster { display: none; }
       .hero-inner {
         min-height: 86svh;
         padding: 104px 24px 40px;
